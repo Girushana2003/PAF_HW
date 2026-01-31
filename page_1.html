@@ -2,18 +2,362 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Bullet Points & Links</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Smart: Science-Backed Learning Techniques</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      line-height: 1.65;
+      color: #2d3748;
+      background: linear-gradient(135deg, #f0f4f8 0%, #e6e9ff 100%);
+      padding: 20px;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+      overflow: hidden;
+    }
+    header {
+      background: linear-gradient(120deg, #4361ee 0%, #3a0ca3 100%);
+      color: white;
+      text-align: center;
+      padding: 60px 30px 50px;
+      position: relative;
+    }
+    h1 {
+      font-size: 3.2rem;
+      margin-bottom: 15px;
+      letter-spacing: -0.5px;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .subtitle {
+      font-size: 1.4rem;
+      opacity: 0.95;
+      max-width: 700px;
+      margin: 0 auto 25px;
+      font-weight: 300;
+    }
+    .stats-bar {
+      display: flex;
+      justify-content: center;
+      gap: 35px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      font-size: 1.05rem;
+    }
+    .stat-item {
+      background: rgba(255,255,255,0.15);
+      padding: 8px 20px;
+      border-radius: 30px;
+      backdrop-filter: blur(5px);
+    }
+    .content {
+      padding: 50px;
+    }
+    @media (max-width: 768px) {
+      .content { padding: 30px 25px; }
+      h1 { font-size: 2.5rem; }
+      .subtitle { font-size: 1.2rem; }
+    }
+    section {
+      margin-bottom: 45px;
+      padding-bottom: 35px;
+      border-bottom: 1px dashed #cbd5e0;
+    }
+    section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    h2 {
+      font-size: 2.1rem;
+      color: #2b2d42;
+      margin: 30px 0 22px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    h2::before {
+      content: "🧠";
+      font-size: 1.8em;
+    }
+    h2:nth-of-type(2)::before { content: "⏱️"; }
+    h2:nth-of-type(3)::before { content: "💡"; }
+    h2:nth-of-type(4)::before { content: "🚫"; }
+    h2:nth-of-type(5)::before { content: "✅"; }
+    p {
+      margin-bottom: 18px;
+      font-size: 1.08rem;
+      color: #4a5568;
+    }
+    .technique-card {
+      background: #f8fafc;
+      border-left: 4px solid #4361ee;
+      border-radius: 0 10px 10px 0;
+      padding: 22px;
+      margin: 25px 0;
+      box-shadow: 0 3px 10px rgba(67, 97, 238, 0.08);
+    }
+    .technique-card h3 {
+      color: #1e3a8a;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .technique-card h3::before {
+      content: "✨";
+      font-size: 1.4em;
+    }
+    .schedule-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 25px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    .schedule-table th {
+      background: linear-gradient(to right, #4361ee, #3a0ca3);
+      color: white;
+      font-weight: 600;
+      padding: 16px 12px;
+      text-align: left;
+    }
+    .schedule-table td {
+      padding: 14px 12px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .schedule-table tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+    .schedule-table tr:hover {
+      background-color: #edf2f7;
+    }
+    .warning-box {
+      background: linear-gradient(135deg, #fff8e6 0%, #ffecb3 100%);
+      border: 1px solid #ffd54f;
+      border-radius: 12px;
+      padding: 25px;
+      margin: 30px 0;
+      position: relative;
+    }
+    .warning-box::before {
+      content: "⚠️";
+      position: absolute;
+      top: -15px;
+      left: 20px;
+      font-size: 2.5rem;
+      background: white;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    }
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin: 25px 0;
+    }
+    .tip-card {
+      background: white;
+      border-radius: 15px;
+      padding: 22px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      border-top: 4px solid #4cc9f0;
+      transition: transform 0.3s ease;
+    }
+    .tip-card:hover { transform: translateY(-5px); }
+    .tip-card h4 {
+      color: #0d3b66;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .conclusion {
+      background: linear-gradient(135deg, #eef7ff 0%, #dbeafe 100%);
+      border-radius: 16px;
+      padding: 30px;
+      margin: 35px 0;
+      border: 1px solid #bfdbfe;
+    }
+    .quote {
+      font-style: italic;
+      text-align: center;
+      font-size: 1.35rem;
+      color: #1a365d;
+      margin: 35px 0;
+      padding: 20px;
+      border-left: 3px solid #4361ee;
+      position: relative;
+    }
+    .quote::before {
+      content: """;
+      position: absolute;
+      left: -20px;
+      top: -15px;
+      font-size: 5rem;
+      color: rgba(67, 97, 238, 0.15);
+      font-family: Georgia, serif;
+    }
+    footer {
+      text-align: center;
+      padding: 35px;
+      background: #f8fafc;
+      color: #4a5568;
+      border-top: 1px solid #e2e8f0;
+      font-size: 1.02rem;
+    }
+    .highlight {
+      background: linear-gradient(120deg, rgba(67,97,238,0.15) 0%, rgba(58,12,163,0.1) 100%);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    ul { padding-left: 28px; margin: 15px 0; }
+    li { margin-bottom: 10px; }
+    a {
+      color: #4361ee;
+      text-decoration: none;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    a:hover { opacity: 0.85; text-decoration: underline; }
+  </style>
 </head>
 <body>
-  <h1>Quick Resources</h1>
-  <ul>
-    <li><a href="https://developer.mozilla.org" target="_blank">MDN Web Docs</a></li>
-    <li><a href="https://w3schools.com" target="_blank">W3Schools</a></li>
-    <li>Local file: <a href="table.html">View Table Example</a></li>
-    <li>Jump to bottom: <a href="#footer">Skip to Footer</a></li>
-  </ul>
-  <div style="margin-top: 300px;">
-    <p id="footer">🕗 Saturday, January 31, 2026 • You reached the footer!</p>
+  <div class="container">
+    <header>
+      <h1>Study Smart, Not Hard</h1>
+      <p class="subtitle">Evidence-based techniques to boost retention, focus, and academic performance—backed by cognitive science</p>
+      <div class="stats-bar">
+        <div class="stat-item">🔬 5 Research-Backed Methods</div>
+        <div class="stat-item">⏱️ Save 10+ Hours Weekly</div>
+        <div class="stat-item">📈 70% Better Retention</div>
+      </div>
+    </header>
+    
+    <div class="content">
+      <section>
+        <h2>Why Traditional Studying Fails</h2>
+        <p>Rereading notes and highlighting textbooks create <span class="highlight">fluency illusions</span>—making material feel familiar without actual mastery. Research from <em>Psychological Science in the Public Interest</em> shows these passive techniques yield the <strong>lowest retention rates</strong> (under 20% after one week).</p>
+        <p>True learning requires <span class="highlight">desirable difficulty</span>: techniques that feel challenging during study but dramatically improve long-term recall. Below are scientifically validated methods used by top performers worldwide.</p>
+      </section>
+      
+      <section>
+        <h2>Proven Techniques That Work</h2>
+        
+        <div class="technique-card">
+          <h3>Active Recall</h3>
+          <p><strong>How it works:</strong> Force your brain to retrieve information without cues. Close your notes and write everything you remember about a topic.</p>
+          <p><strong>Why it works:</strong> Strengthens neural pathways 5x more effectively than passive review (Karpicke & Blunt, 2011). Increases exam scores by 50% compared to rereading.</p>
+          <p><strong>Try this:</strong> After reading a chapter, spend 5 minutes writing key concepts from memory. Check accuracy afterward.</p>
+        </div>
+        
+        <div class="technique-card">
+          <h3>Spaced Repetition</h3>
+          <p><strong>How it works:</strong> Review material at increasing intervals just as you're about to forget it.</p>
+          <p><strong>Why it works:</strong> Leverages the "spacing effect" to move knowledge into long-term memory. Reduces study time by 75% while doubling retention (Cepeda et al., 2008).</p>
+          
+          <table class="schedule-table">
+            <thead>
+              <tr>
+                <th>Learning Stage</th>
+                <th>Optimal Review Timing</th>
+                <th>Tool Recommendation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>New Concept</td><td>1 day later</td><td>Anki, Quizlet</td></tr>
+              <tr><td>Familiar Topic</td><td>3 days later</td><td>Physical flashcards</td></tr>
+              <tr><td>Mastered Material</td><td>1 week later</td><td>Self-testing quiz</td></tr>
+              <tr><td>Exam Preparation</td><td>2 weeks before exam</td><td>Practice problems</td></tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <div class="technique-card">
+          <h3>Pomodoro Technique</h3>
+          <p>Work in focused 25-minute blocks followed by 5-minute breaks. After four cycles, take a 15-30 minute break.</p>
+          <p><strong>Science says:</strong> Prevents cognitive fatigue, maintains consistent focus, and reduces procrastination by making tasks feel manageable. Studies show 30% higher task completion rates.</p>
+        </div>
+      </section>
+      
+      <section>
+        <h2>Environment Optimization</h2>
+        <p>Your surroundings significantly impact cognitive performance. Implement these evidence-based adjustments:</p>
+        
+        <div class="tips-grid">
+          <div class="tip-card">
+            <h4>🌿 Nature Boost</h4>
+            <p>Study near plants or windows with natural light. Research shows 15% faster task completion and reduced stress (University of Michigan).</p>
+          </div>
+          <div class="tip-card">
+            <h4>🔇 Sound Strategy</h4>
+            <p>Use brown noise for concentration (better than silence for complex tasks). Avoid lyrics during reading-heavy work.</p>
+          </div>
+          <div class="tip-card">
+            <h4>💧 Hydration Station</h4>
+            <p>Keep water nearby. Even mild dehydration (1-2%) reduces attention span and working memory by 10% (Journal of Nutrition).</p>
+          </div>
+          <div class="tip-card">
+            <h4>📱 Phone Jail</h4>
+            <p>Place devices in another room. Just seeing your phone reduces cognitive capacity by 10 IQ points (University of Texas).</p>
+          </div>
+        </div>
+      </section>
+      
+      <section>
+        <h2>Critical Mistakes to Avoid</h2>
+        
+        <div class="warning-box">
+          <p><strong>❌ Multitasking Myth:</strong> Switching between tasks (like checking messages while studying) increases errors by 50% and doubles time needed to complete work (American Psychological Association).</p>
+          <p><strong>❌ All-Nighters:</strong> Sleep deprivation after learning reduces memory consolidation by 40%. One night of sleep loss = losing 2 days of studying (Walker, 2017).</p>
+          <p><strong>❌ Cramming:</strong> Information learned in marathon sessions is forgotten 3x faster than spaced learning. You'll spend more total time relearning material.</p>
+        </div>
+        
+        <p>Instead: Study in 30-50 minute focused sessions with breaks. Prioritize 7-9 hours of sleep—especially after learning new material. Your brain consolidates memories during deep sleep cycles.</p>
+      </section>
+      
+      <section>
+        <h2>Putting It All Together</h2>
+        
+        <div class="quote">
+          "Learning is not about time invested—it's about <strong>cognitive engagement</strong>. 
+          Struggle during study is not failure; it's the signal of growth."
+        </div>
+        
+        <div class="conclusion">
+          <p><strong>Your 7-Day Implementation Plan:</strong></p>
+          <ul>
+            <li><strong>Day 1:</strong> Replace highlighting with margin questions ("What was the main argument?")</li>
+            <li><strong>Day 2:</strong> Create 10 flashcards for current topic using Anki (free spaced repetition app)</li>
+            <li><strong>Day 3:</strong> Study in three 25-minute Pomodoro sessions with breaks</li>
+            <li><strong>Day 4:</strong> Remove phone from study area; use Forest app to stay focused</li>
+            <li><strong>Day 5:</strong> Teach one concept to a friend (or imaginary audience)</li>
+            <li><strong>Day 6:</strong> Review flashcards during spaced intervals</li>
+            <li><strong>Day 7:</strong> Reflect: What technique felt most effective? Adjust your system.</li>
+          </ul>
+          <p style="margin-top: 15px; font-weight: 500; color: #1e40af;">
+            Consistency beats intensity. Small, sustainable changes create transformative results over time.
+          </p>
+        </div>
+      </section>
+    </div>
+    
+    <footer>
+      <p>📚 Based on research from <em>Make It Stick</em> (Brown et al.), <em>Atomic Habits</em> (Clear), and peer-reviewed cognitive science journals</p>
+      <p>🔗 Explore free resources: <a href="https://ankiweb.net" target="_blank">Anki</a> • <a href="https://forestapp.cc" target="_blank">Forest App</a> • <a href="https://collegeinfogeek.com" target="_blank">College Info Geek</a></p>
+      <p style="margin-top: 12px; font-size: 0.95em; color: #718096;">
+        Created with ❤️ for lifelong learners • Saturday, January 31, 2026<br>
+        <em>Share knowledge, not stress. You've got this.</em>
+      </p>
+    </footer>
   </div>
 </body>
 </html>
