@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classic Chocolate Chip Cookies</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Georgia', serif;
+      background: linear-gradient(to bottom, #8d6e63 0%, #a9a9a9 100%);
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    .recipe-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+    }
+    header {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                  url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%235d4037"/><circle cx="20" cy="20" r="5" fill="%238d6e63"/><circle cx="50" cy="30" r="5" fill="%238d6e63"/><circle cx="80" cy="20" r="5" fill="%238d6e63"/><circle cx="30" cy="60" r="5" fill="%238d6e63"/><circle cx="70" cy="60" r="5" fill="%238d6e63"/><circle cx="50" cy="80" r="5" fill="%238d6e63"/></svg>');
+      background-size: cover;
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    .subtitle {
+      font-size: 1.3em;
+      opacity: 0.9;
+      margin-bottom: 15px;
+    }
+    .meta {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 15px;
+      font-size: 1.1em;
+    }
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .content {
+      padding: 40px;
+    }
+    h2 {
+      color: #5d4037;
+      font-size: 1.8em;
+      margin: 30px 0 20px;
+      padding-bottom: 8px;
+      border-bottom: 3px solid #d7ccc8;
+    }
+    .ingredients-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin: 25px 0;
+    }
+    .ingredient-group h3 {
+      color: #8d6e63;
+      margin-bottom: 12px;
+      font-size: 1.3em;
+    }
+    .ingredient-group ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    .ingredient-group li {
+      padding: 8px 0 8px 25px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="5" fill="%238d6e63"/></svg>') no-repeat left center;
+      background-size: 10px;
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+    .steps ol {
+      counter-reset: step-counter;
+      list-style: none;
+      margin-left: 0;
+      padding-left: 0;
+    }
+    .steps li {
+      counter-increment: step-counter;
+      position: relative;
+      padding: 20px 20px 20px 60px;
+      margin-bottom: 15px;
+      background: #f5f5f5;
+      border-radius: 8px;
+      border-left: 4px solid #8d6e63;
+    }
+    .steps li::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      background: #8d6e63;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    .tips {
+      background: #fff8e1;
+      border-left: 5px solid #ffc107;
+      padding: 20px;
+      border-radius: 0 8px 8px 0;
+      margin: 30px 0;
+    }
+    .tips h3 {
+      color: #5d4037;
+      margin-bottom: 10px;
+    }
+    .nutrition-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 30px 0;
+      font-size: 0.95em;
+    }
+    .nutrition-table th,
+    .nutrition-table td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    .nutrition-table th {
+      background-color: #8d6e63;
+      color: white;
+    }
+    .nutrition-table tr:hover {
+      background-color: #f5f5f5;
+    }
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #f5f5f5;
+      color: #777;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <div class="recipe-container">
+    <header>
+      <h1>🍪 Classic Chocolate Chip Cookies</h1>
+      <p class="subtitle">Crispy edges, chewy centers, and loaded with chocolate</p>
+      <div class="meta">
+        <div class="meta-item">⏱️ 15 min prep</div>
+        <div class="meta-item">🔥 10 min bake</div>
+        <div class="meta-item">🍽️ 24 cookies</div>
+      </div>
+    </header>
+    
+    <div class="content">
+      <p>There's nothing quite like the smell of freshly baked chocolate chip cookies wafting through your home. This timeless recipe, perfected over decades, delivers the perfect balance of crispy edges and soft, chewy centers. Whether you're baking for a special occasion or just satisfying a sweet craving, these cookies are sure to become a family favorite.</p>
+      
+      <h2>📝 Ingredients</h2>
+      <div class="ingredients-grid">
+        <div class="ingredient-group">
+          <h3>Dry Ingredients</h3>
+          <ul>
+            <li>2 ¼ cups all-purpose flour</li>
+            <li>1 tsp baking soda</li>
+            <li>1 tsp salt</li>
+          </ul>
+        </div>
+        <div class="ingredient-group">
+          <h3>Wet Ingredients</h3>
+          <ul>
+            <li>1 cup unsalted butter, softened</li>
+            <li>¾ cup granulated sugar</li>
+            <li>¾ cup packed brown sugar</li>
+            <li>2 large eggs</li>
+            <li>2 tsp vanilla extract</li>
+          </ul>
+        </div>
+        <div class="ingredient-group">
+          <h3>Add-ins</h3>
+          <ul>
+            <li>2 cups semi-sweet chocolate chips</li>
+            <li>1 cup chopped walnuts (optional)</li>
+          </ul>
+        </div>
+      </div>
+      
+      <h2>👩‍🍳 Instructions</h2>
+      <div class="steps">
+        <ol>
+          <li><strong>Preheat oven</strong> to 375°F (190°C). Line baking sheets with parchment paper.</li>
+          <li><strong>Cream butter and sugars</strong> together in a large bowl until light and fluffy, about 3-4 minutes.</li>
+          <li><strong>Beat in eggs</strong> one at a time, then stir in vanilla extract.</li>
+          <li><strong>Whisk dry ingredients</strong> in a separate bowl, then gradually add to the wet mixture, mixing until just combined.</li>
+          <li><strong>Fold in chocolate chips</strong> (and nuts if using) until evenly distributed.</li>
+          <li><strong>Scoop dough</strong> using a tablespoon or cookie scoop, placing balls 2 inches apart on baking sheets.</li>
+          <li><strong>Bake for 9-11 minutes</strong> until edges are golden but centers are still soft.</li>
+          <li><strong>Cool on sheets</strong> for 2 minutes, then transfer to wire racks to cool completely.</li>
+        </ol>
+      </div>
+      
+      <div class="tips">
+        <h3>💡 Pro Tips</h3>
+        <p><strong>Room temperature ingredients:</strong> Ensure butter and eggs are at room temperature for better incorporation.</p>
+        <p><strong>Don't overmix:</strong> Mix just until flour disappears to avoid tough cookies.</p>
+        <p><strong>Underbake slightly:</strong> Cookies will continue cooking on the hot sheet after removal from oven.</p>
+        <p><strong>Chill the dough:</strong> For thicker cookies, refrigerate dough for 30 minutes before baking.</p>
+      </div>
+      
+      <h2>📊 Nutrition Information</h2>
+      <table class="nutrition-table">
+        <thead>
+          <tr>
+            <th>Nutrient</th>
+            <th>Per Cookie (approx.)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Calories</td><td>180 kcal</td></tr>
+          <tr><td>Total Fat</td><td>9g</td></tr>
+          <tr><td>Saturated Fat</td><td>5g</td></tr>
+          <tr><td>Carbohydrates</td><td>24g</td></tr>
+          <tr><td>Sugar</td><td>15g</td></tr>
+          <tr><td>Protein</td><td>2g</td></tr>
+        </tbody>
+      </table>
+      
+      <h2>💭 Notes</h2>
+      <p>These cookies taste best when enjoyed warm with a glass of cold milk. Store in an airtight container at room temperature for up to 5 days, or freeze for up to 3 months. The dough can also be frozen in balls and baked directly from frozen (add 1-2 minutes to baking time).</p>
+      
+      <p>For a fun twist, try substituting milk chocolate chips, white chocolate chips, or adding a sprinkle of sea salt on top before baking for that trendy salted chocolate flavor!</p>
+    </div>
+    
+    <footer>
+      <p>👨‍🍳 Recipe created and tested • Saturday, January 31, 2026</p>
+      <p>❤️ Share your creations with #PerfectChocolateChipCookies</p>
+    </footer>
+  </div>
+</body>
+</html>
