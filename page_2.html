@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bali Travel Guide • Paradise Island</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1a2a6c, #2c3e50);
+      color: #333;
+      line-height: 1.7;
+    }
+    .guide-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
+    }
+    header {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), 
+                  url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><rect width="400" height="300" fill="%234fc3f7"/><rect y="200" width="400" height="100" fill="%234db6ac"/><circle cx="320" cy="80" r="40" fill="%23ffeb3b"/><circle cx="100" cy="230" r="5" fill="%23ff5722"/><circle cx="120" cy="225" r="5" fill="%23ff5722"/><circle cx="140" cy="220" r="5" fill="%23ff5722"/><circle cx="160" cy="215" r="5" fill="%23ff5722"/><circle cx="180" cy="210" r="5" fill="%23ff5722"/><circle cx="200" cy="205" r="5" fill="%23ff5722"/></svg>');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      padding: 80px 30px;
+      position: relative;
+    }
+    h1 {
+      font-size: 3.5em;
+      margin-bottom: 15px;
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6);
+      letter-spacing: 1px;
+    }
+    .tagline {
+      font-size: 1.5em;
+      font-weight: 300;
+      margin-bottom: 25px;
+      opacity: 0.95;
+    }
+    .header-meta {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 20px;
+      font-size: 1.1em;
+      flex-wrap: wrap;
+    }
+    .meta-badge {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 10px 25px;
+      border-radius: 30px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .content-wrapper {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 40px;
+      padding: 50px;
+    }
+    @media (max-width: 900px) {
+      .content-wrapper {
+        grid-template-columns: 1fr;
+        padding: 30px;
+      }
+    }
+    .main-content h2 {
+      color: #e67e22;
+      font-size: 2em;
+      margin: 35px 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #f5b041;
+    }
+    .main-content h3 {
+      color: #27ae60;
+      margin: 25px 0 15px;
+      font-size: 1.4em;
+    }
+    .main-content p {
+      margin-bottom: 18px;
+      font-size: 1.05em;
+    }
+    .highlight-box {
+      background: linear-gradient(135deg, #fef6e4, #f5e6d3);
+      border-left: 5px solid #f39c12;
+      padding: 25px;
+      border-radius: 0 10px 10px 0;
+      margin: 30px 0;
+    }
+    .highlight-box h4 {
+      color: #d35400;
+      margin-bottom: 10px;
+      font-size: 1.2em;
+    }
+    .sidebar {
+      background: #f8f9fa;
+      padding: 30px;
+      border-radius: 15px;
+      align-self: start;
+      position: sticky;
+      top: 30px;
+    }
+    .sidebar h3 {
+      color: #2c3e50;
+      margin-bottom: 20px;
+      font-size: 1.5em;
+      text-align: center;
+    }
+    .info-card {
+      background: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    }
+    .info-card h4 {
+      color: #3498db;
+      margin-bottom: 10px;
+      font-size: 1.1em;
+    }
+    .info-card p {
+      font-size: 0.95em;
+      color: #555;
+    }
+    .must-visit {
+      list-style: none;
+      padding-left: 0;
+    }
+    .must-visit li {
+      padding: 12px 0 12px 35px;
+      border-bottom: 1px dashed #ddd;
+      position: relative;
+      font-weight: 500;
+    }
+    .must-visit li:last-child {
+      border-bottom: none;
+    }
+    .must-visit li::before {
+      content: "📍";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.2em;
+    }
+    .tips-list {
+      padding-left: 25px;
+      margin: 20px 0;
+    }
+    .tips-list li {
+      margin-bottom: 10px;
+      font-size: 1.02em;
+    }
+    .budget-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 25px 0;
+      font-size: 0.95em;
+    }
+    .budget-table th,
+    .budget-table td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    .budget-table th {
+      background-color: #3498db;
+      color: white;
+    }
+    .budget-table tr:hover {
+      background-color: #e3f2fd;
+    }
+    .budget-table .low { color: #27ae60; font-weight: bold; }
+    .budget-table .medium { color: #f39c12; font-weight: bold; }
+    .budget-table .high { color: #e74c3c; font-weight: bold; }
+    .quote {
+      font-style: italic;
+      text-align: center;
+      padding: 30px;
+      margin: 40px 0;
+      background: linear-gradient(135deg, #74b9ff, #0984e3);
+      color: white;
+      border-radius: 15px;
+      position: relative;
+    }
+    .quote::before,
+    .quote::after {
+      content: """;
+      font-size: 5em;
+      position: absolute;
+      opacity: 0.3;
+    }
+    .quote::before {
+      top: -20px;
+      left: 10px;
+    }
+    .quote::after {
+      bottom: -40px;
+      right: 10px;
+      transform: rotate(180deg);
+    }
+    footer {
+      background: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 40px;
+      font-size: 0.95em;
+    }
+    footer a {
+      color: #3498db;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="guide-container">
+    <header>
+      <h1>🌴 BALI</h1>
+      <p class="tagline">The Island of the Gods • Indonesia</p>
+      <div class="header-meta">
+        <div class="meta-badge">🏝️ Island Paradise</div>
+        <div class="meta-badge">🌏 Indonesia</div>
+        <div class="meta-badge">☀️ Tropical Climate</div>
+      </div>
+    </header>
+    
+    <div class="content-wrapper">
+      <div class="main-content">
+        <h2>✨ Introduction</h2>
+        <p>Bali, known as the "Island of the Gods," is Indonesia's most famous tourist destination and a paradise for travelers seeking natural beauty, rich culture, and spiritual experiences. Located in the Lesser Sunda Islands, this small island packs an incredible diversity of landscapes—from pristine beaches and lush rice terraces to volcanic mountains and sacred temples.</p>
+        
+        <p>What makes Bali truly special is its unique blend of Hindu culture (unlike the predominantly Muslim rest of Indonesia), warm hospitality, and breathtaking scenery. Whether you're looking for adventure, relaxation, cultural immersion, or digital nomad life, Bali offers something for every type of traveler.</p>
+        
+        <div class="highlight-box">
+          <h4>🏝️ Island Facts</h4>
+          <p><strong>Area:</strong> 5,780 km² (2,231 sq mi) • <strong>Population:</strong> ~4.3 million • <strong>Capital:</strong> Denpasar • <strong>Language:</strong> Indonesian & Balinese • <strong>Currency:</strong> Indonesian Rupiah (IDR)</p>
+        </div>
+        
+        <h2>🏖️ Best Places to Visit</h2>
+        
+        <h3>Ubud – Cultural Heart</h3>
+        <p>Nestled among lush jungles and rice paddies, Ubud is Bali's cultural and artistic center. Famous for its traditional dance performances, art galleries, yoga retreats, and the Sacred Monkey Forest Sanctuary. Don't miss the Tegalalang Rice Terraces just north of town—a stunning example of traditional Balinese agriculture.</p>
+        
+        <h3>Seminyak & Canggu – Beach Vibes</h3>
+        <p>These neighboring areas on Bali's southwest coast are known for their upscale beach clubs, trendy restaurants, boutique shopping, and vibrant nightlife. Seminyak offers luxury and sophistication, while Canggu attracts surfers, digital nomads, and a younger crowd with its laid-back atmosphere.</p>
+        
+        <h3>Uluwatu – Dramatic Cliffs</h3>
+        <p>Perched on a cliff 70 meters above the Indian Ocean, Uluwatu Temple is one of Bali's six key spiritual pillars. The area is famous for world-class surfing, breathtaking sunsets, and the traditional Kecak fire dance performed at the temple every evening.</p>
+        
+        <h3>Mount Batur – Volcanic Adventure</h3>
+        <p>For the adventurous traveler, a pre-dawn trek to the summit of Mount Batur (1,717m) rewards you with a spectacular sunrise over the island and neighboring Mount Agung. The active volcano features a crater lake and offers one of Bali's most memorable experiences.</p>
+        
+        <h2>🍽️ Food & Cuisine</h2>
+        <p>Balinese cuisine is a flavorful fusion of Indonesian spices, fresh seafood, and traditional cooking methods. Must-try dishes include:</p>
+        <ul class="tips-list">
+          <li><strong>Nasi Goreng</strong> – Indonesia's famous fried rice, often served with a fried egg on top</li>
+          <li><strong>Babi Guling</strong> – Suckling pig roasted with turmeric and other spices (a Balinese specialty)</li>
+          <li><strong>Bebek Betutu</strong> – Slow-cooked duck wrapped in banana leaves with rich spices</li>
+          <li><strong>Sate Lembar</strong> – Grilled meat skewers served with peanut sauce</li>
+          <li><strong>Lawar</strong> – Traditional mix containing vegetables, coconut, and minced meat</li>
+        </ul>
+        
+        <p>For drinks, try fresh coconut water, Indonesian coffee (Kopi Luwak is famous but controversial), and the local spirit Arak. Many restaurants in tourist areas offer international cuisine, but venturing to local warungs (small eateries) provides an authentic and budget-friendly experience.</p>
+        
+        <div class="quote">
+          "Bali is more than just a destination; it's a feeling. The island has a way of slowing down time and reminding you what truly matters."
+        </div>
+        
+        <h2>💰 Budget Guide (Per Day)</h2>
+        <table class="budget-table">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Budget Traveler</th>
+              <th>Mid-Range</th>
+              <th>Luxury</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Accommodation</td><td class="low">150K–300K IDR</td><td class="medium">500K–1.5M IDR</td><td class="high">2M+ IDR</td></tr>
+            <tr><td>Food</td><td class="low">100K–200K IDR</td><td class="medium">300K–600K IDR</td><td class="high">800K+ IDR</td></tr>
+            <tr><td>Transport</td><td class="low">50K–100K IDR</td><td class="medium">150K–300K IDR</td><td class="high">500K+ IDR</td></tr>
+            <tr><td>Activities</td><td class="low">100K–200K IDR</td><td class="medium">300K–700K IDR</td><td class="high">1M+ IDR</td></tr>
+            <tr><td><strong>Total</strong></td><td class="low"><strong>400K–800K IDR</strong></td><td class="medium"><strong>1.2M–3.1M IDR</strong></td><td class="high"><strong>4.3M+ IDR</strong></td></tr>
+          </tbody>
+        </table>
+        <p style="font-size: 0.9em; color: #666; margin-top: -15px;"><em>*Exchange rate approx: 1 USD = 15,000 IDR</em></p>
+        
+        <h2>⚠️ Travel Tips</h2>
+        <ul class="tips-list">
+          <li><strong>Best time to visit:</strong> Dry season (April–October) for optimal weather</li>
+          <li><strong>Temple etiquette:</strong> Cover shoulders and knees; wear a sarong when entering temples</li>
+          <li><strong>Bargaining:</strong> Expected at markets and street vendors, but be respectful</li>
+          <li><strong>Transport:</strong> Rent a scooter (with license) or use ride-hailing apps like Gojek/Grab</li>
+          <li><strong>Water:</strong> Drink bottled water only; avoid ice in rural areas</li>
+          <li><strong>Money:</strong> ATMs widely available; credit cards accepted in tourist areas</li>
+          <li><strong>Language:</strong> Learn basic phrases like "Terima kasih" (thank you) and "Selamat pagi" (good morning)</li>
+        </ul>
+        
+        <h2>🎯 Final Thoughts</h2>
+        <p>Bali is more than just a tropical getaway—it's an experience that touches the soul. From the spiritual serenity of ancient temples to the adrenaline rush of surfing world-class waves, from the tranquility of sunrise yoga to the excitement of vibrant nightlife, Bali truly offers something for everyone.</p>
+        
+        <p>Whether you're planning a two-week vacation or considering a longer stay as part of Bali's growing expat community, this magical island will leave you with memories to last a lifetime. Pack your bags, bring an open heart, and get ready to fall in love with Bali.</p>
+      </div>
+      
+      <div class="sidebar">
+        <h3>📋 Quick Guide</h3>
+        
+        <div class="info-card">
+          <h4>🛂 Visa Info</h4>
+          <p>Most nationalities get 30-day visa-free entry. Extendable once for another 30 days at immigration office.</p>
+        </div>
+        
+        <div class="info-card">
+          <h4>🌡️ Weather</h4>
+          <p><strong>Dry:</strong> Apr–Oct (24–31°C)<br><strong>Wet:</strong> Nov–Mar (25–32°C)<br>Humidity: 70–90%</p>
+        </div>
+        
+        <div class="info-card">
+          <h4>💰 Money Tips</h4>
+          <p>Negotiate scooter rental (50K–100K/day).<br>Eat at local warungs to save 50–70%.<br>Always carry small bills for markets.</p>
+        </div>
+        
+        <h4 style="color: #e67e22; margin: 25px 0 15px; text-align: center;">📍 Must-Visit</h4>
+        <ul class="must-visit">
+          <li>Tanah Lot Temple</li>
+          <li>Tirta Empul Water Temple</li>
+          <li>Uluwatu Temple</li>
+          <li>Tegalalang Rice Terraces</li>
+          <li>Sacred Monkey Forest</li>
+          <li>Mount Batur Sunrise Trek</li>
+          <li>Nusa Penida Island</li>
+          <li>Waterbom Bali (water park)</li>
+        </ul>
+        
+        <div class="info-card">
+          <h4>⚠️ Safety</h4>
+          <p>Low crime but watch for:<br>• Scooter accidents<br>• Pickpockets in crowded areas<br>• Overpriced taxis<br>• Fake police scams</p>
+        </div>
+        
+        <div class="info-card">
+          <h4>📱 Connectivity</h4>
+          <p>Free WiFi in cafes.<br>Local SIM cards cheap (Telkomsel best coverage).<br>Grab/Gojek apps essential for transport.</p>
+        </div>
+      </div>
+    </div>
+    
+    <footer>
+      <p>✈️ Bali Travel Guide • Comprehensive Island Information</p>
+      <p>📅 Last updated: Saturday, January 31, 2026</p>
+      <p>📚 More travel guides: <a href="#">Visit Our Website</a> • Follow us: <a href="#">@TravelParadise</a></p>
+      <p style="margin-top: 15px; font-size: 0.9em; opacity: 0.8;">
+        Disclaimer: Prices and information subject to change. Always check current travel advisories before booking.
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
